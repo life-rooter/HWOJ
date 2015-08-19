@@ -1,6 +1,6 @@
 <<<<<<< HEAD
-# -This project is created by xh
-This project includes the source code for HUAWEI OJ.mostly in c language,some in C++.
+# -This project is created by xh. My email is banre123@126.com
+#-This project includes the source codes for HUAWEI OJ.mostly in c language,some in C++.
 =======
 # -This project is the source code answer in c/c++ for HUAWEI OJ
 #-You can find the problem set in this two websites:
