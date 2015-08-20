@@ -10,9 +10,9 @@ int GetNumber(unsigned int i)
 		cnt++;
 		else
 			if(cnt>max) {max=cnt;cnt=0;}
-		i=i>>1;//×îºóÒ»´Îi±äÎª0Ê±£¬max»¹Î´¸üĞÂ¾ÍÌø³öÑ­»·ÁË
+		i=i>>1;//æœ€åä¸€æ¬¡iå˜ä¸º0æ—¶ï¼Œmaxè¿˜æœªæ›´æ–°å°±è·³å‡ºå¾ªç¯äº†
 	}
-	if(cnt>max)return cnt;//ÃÖ²¹×îºóÒ»´ÎÎ´¸üĞÂµÄmaxÖµ
+	if(cnt>max)return cnt;//å¼¥è¡¥æœ€åä¸€æ¬¡æœªæ›´æ–°çš„maxå€¼
 	return max;
 }
 
