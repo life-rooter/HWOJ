@@ -56,7 +56,7 @@ int main()
 {
 	char s[20];
 	//gets(s);
-	fgets(s,20,stdin);//可能的结尾是'\n' ,'\0';
+	fgets(s,20,stdin);//偶脡脛脺木脛藵谩脦藳臉脟'\n' ,'\0';
 	prlevel(count(s));
 	getchar();
 }
