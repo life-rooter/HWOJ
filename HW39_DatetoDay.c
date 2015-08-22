@@ -18,7 +18,7 @@ int Date2Day(int year,int month,int day)
 {
 	int count=0;
 	int mon[12]={0,31,60,91,121,152,182,213,244,274,305,335};
-    if(isleapyear(year)||!isleapyear(year)&&month<=2)//not leap year ,month 1 and 2 no need mibus 1
+    if(isleapyear(year)||!isleapyear(year)&&month<=2)//not leap year ,month 1 and 2 no need minus 1
 			return mon[month-1]+day;
 	return mon[month-1]+day-1;
 }
