@@ -19,6 +19,10 @@ void GetNumberSequence(int a)
 int main()
 {
 	int m;
-	while(scanf("%d",&m),m)
+	scanf("%d",&m);
+	if(m<=100&&m>=1)
 	GetNumberSequence(m);
+	else
+	    return -1;
+	return 0;
 }
