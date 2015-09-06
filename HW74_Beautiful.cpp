@@ -43,6 +43,7 @@ int main(){
     while(cin>>n){
         for(int i = 0;i < n;++i){
             cin>>str;
+	    transform(str.begin(),str.end(),toupper);
             cout<<BeautyDegree(str)<<endl;
         }//for
     }//while
