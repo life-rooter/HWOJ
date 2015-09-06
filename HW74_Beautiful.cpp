@@ -9,7 +9,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <list>
+#include<cstdio>
 using namespace std;
 
 bool cmp(const int a,const int b){
@@ -39,12 +39,13 @@ int BeautyDegree(string str){
 int main(){
     string str;
     int n;
-    //freopen("C:\\Users\\Administrator\\Desktop\\c++.txt","r",stdin);
     while(cin>>n){
+		cin.get();//get rid of '\n'
         for(int i = 0;i < n;++i){
-            cin>>str;
-	    transform(str.begin(),str.end(),toupper);
-            cout<<BeautyDegree(str)<<endl;
+            getline(cin,str);
+			//transform(str.begin(),str.end(),str.begin(),(int(*)(int))toupper);
+		transform(str.begin(),str.end(),str.begin(),::toupper);
+			cout<<BeautyDegree(str)<<endl;
         }//for
     }//while
     return 0;
