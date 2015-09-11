@@ -30,11 +30,12 @@ void LongestHw(char *s)
 			max=count;
 		}
 	}
-	for(i=posi;i<=posi+max;i++)
+	/*for(i=posi;i<=posi+max;i++)
 	{
 		printf("%c",s[i]);
 	}
-	
+*/
+	printf("%d\n",max+1);
 
 }
 int main()
