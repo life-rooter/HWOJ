@@ -8,7 +8,7 @@ void LongestHw(char *s)
 	{	tempi=i;flag=1;
 		for(j=(strlen(s)-1);j>=i;--j)
 		{   
-			if(flag==1)//ֻ�ܳ�ʼ���޸�count,j���
+			if(flag==1)//Ö»ÄÜ³õÊ¼»¯ÐÞ¸Äcount,j»á±ä
 			  count=j-i;
 			if(j>=tempi&&s[j]==s[tempi])
 				{
@@ -30,7 +30,11 @@ void LongestHw(char *s)
 			max=count;
 		}
 	}
+<<<<<<< HEAD
 	/*for(i=posi;i<=posi+max;i++)
+=======
+/*	for(i=posi;i<=posi+max;i++)
+>>>>>>> d194fbe7e89b84d17b0ac836f24adafef8bbba45
 	{
 		printf("%c",s[i]);
 	}

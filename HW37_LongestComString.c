@@ -6,7 +6,7 @@ int LCS(char *s1,char *s2)
 	int len1=strlen(s1);
 	int len2=strlen(s2);
 	int start1,start2;
-	int i,j,count=0,max=0;
+	int i,j,count=0,max=0,pos=0;
 	for(i=0;i<len1;i++)
 	{
 		for(j=0;j<len2;j++)
@@ -18,20 +18,29 @@ int LCS(char *s1,char *s2)
 				++start1;
 				++start2;
 			}
-		}
-		if(count>max)
-		{
+			if(count>max)
+			{
 			max=count;
+			pos=i;
+			}
+			count=0;
 		}
-		count=0;
+		
 	}
-		return max;
+	if(max==0)return;
+	else
+	{
+		for(j=pos;j<pos+max;++j)
+		printf("%c",s1[j]);
+		printf("\n");
+}
 }
 int main()
 {
 	char a[100],b[100];
 	gets(a);
 	gets(b);
-	printf("%d",LCS(a,b));
-	getchar();
+	LCS(a,b);
+	//printf("%d",LCS(a,b));
+	//getchar();
 }
