@@ -21,6 +21,7 @@ void ExtractInt(char *s)
 	char b[20];
 	char c[20];
 	int i=0;
+	char *p;
 	//memset(b,0,10);
 	reverse(s);//s reverse
 	memset(b,0,sizeof(char)*20);
@@ -43,7 +44,7 @@ void ExtractInt(char *s)
 		s[j]=c[j];
 	s[i]='\0';
 */
-	char *p=s; // use p to replace s,otherwise thr return of will change
+	p=s; // use p to replace s,otherwise thr return of will change
 	while(*p)// when use s ,change the point
 	{
 		if(b[*p-'0']==0)//该数字尚未出现过
@@ -67,9 +68,14 @@ int main()
 	char *p;
 //gets(str);
 while(scanf("%s",str)!=EOF)
-{
+{	
+	if(strlen(str)==1)
+		printf("%s\n",str);
+	else
+	{
 	ExtractInt(str);
 	printf("%s\n",str);
+	}
 }
 
 }
