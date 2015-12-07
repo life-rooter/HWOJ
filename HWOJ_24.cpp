@@ -94,3 +94,64 @@ int main()
 	//system("pause");
     return 0;
 }
+/*
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+// 迭代 模拟各种组合
+void helper(vector<int> &num,int index,int result,bool &isSucess){
+    if(index == 4){
+        if(result == 24){
+            isSucess = true;
+        }//if
+        return;
+    }//if
+    for(int i = 0;i < 4;++i){
+        if(i == 0){
+            //op.push_back('+');
+            helper(num,index+1,result+num[index],isSucess);
+        }//if
+        else if(i == 1){
+            //op.push_back('-');
+            helper(num,index+1,result-num[index],isSucess);
+        }//else
+        else if(i == 2){
+            //op.push_back('*');
+            helper(num,index+1,result*num[index],isSucess);
+        }//else
+        else{
+            //op.push_back('/');
+            helper(num,index+1,result/num[index],isSucess);
+        }//else
+        //op.pop_back();
+        // 找到解决方案
+        if(isSucess){
+            break;
+        }//if
+    }//for
+}
+
+bool Game24Points(int a, int b, int c, int d){
+    vector<int> num;
+    num.push_back(a);
+    num.push_back(b);
+    num.push_back(c);
+    num.push_back(d);
+    bool isSucess = false;
+    helper(num,1,num[0],isSucess);
+    if(isSucess){
+        return isSucess;
+    }//if
+    // 全排列  主要应对 6 + 2 * 4 + 10 = 24
+    while(next_permutation(num.begin(),num.end())){
+        helper(num,1,num[0],isSucess);
+        if(isSucess){
+            return isSucess;
+        }//if
+    }//while
+    return isSucess;
+}
+*/
