@@ -23,12 +23,12 @@ int WordAnalysis(char *p,char *q)
     }
     int size = strlen(pszIPAddr);
     int start = 0;
-    while(pszIPAddr[start] == ' ')//È¥³ıÇ°ÃæµÄ¿Õ¸ñ
+    while(pszIPAddr[start] == ' ')//å»é™¤å‰é¢çš„ç©ºæ ¼
     {
         ++start;
     }
     int end = size - 1;
-    while(pszIPAddr[end] == ' ')//È¥³ıºóÃæµÄ¿Õ¸ñ
+    while(pszIPAddr[end] == ' ')//å»é™¤åé¢çš„ç©ºæ ¼
     {
         --end;
     }
@@ -44,7 +44,7 @@ int WordAnalysis(char *p,char *q)
 		{
 			++i;
 		}
-		if(i>end) q=&pszIPAddr[i];// ×îºóÒ»´ÎqÕÒ²»µ½¡®.'£¬·ñÔò»áÔ½½ç
+		if(i>end) q=&pszIPAddr[i];// æœ€åä¸€æ¬¡qæ‰¾ä¸åˆ°â€˜.'ï¼Œå¦åˆ™ä¼šè¶Šç•Œ
 		else q=&pszIPAddr[i];
 		if(WordAnalysis(p,q)==0) return 0;
 		p=q+1;
@@ -70,13 +70,13 @@ bool isIPAddressValid(const char* pszIPAddr)
         return false;
     }//if
     int size = strlen(pszIPAddr);
-    // È¥³ıÇ°µ¼0
+    // å»é™¤å‰å¯¼0
     int start = 0;
     while(pszIPAddr[start] == ' ')
     {
         ++start;
     }//while
-    // È¥³ıºóµ¼0
+    // å»é™¤åå¯¼0
     int end = size - 1;
     while(pszIPAddr[end] == ' ')
     {
@@ -97,7 +97,7 @@ bool isIPAddressValid(const char* pszIPAddr)
             {
                 return false;
             }
-            // ÑéÖ¤.¸öÊı
+            // éªŒè¯.ä¸ªæ•°
             if(pszIPAddr[i] == '.')
             {
                 ++pointCount;
@@ -106,12 +106,12 @@ bool isIPAddressValid(const char* pszIPAddr)
                     return false;
                 }//if
             }//if
-            // ÑéÖ¤Êı¾İ
+            // éªŒè¯æ•°æ®
             if(num > 255 || num < 0)
             {
                 return false;
             }//if
-            // ÒÔ0¿ªÍ·ÇÒ²»Îª0 ÀıÈç£º023
+            // ä»¥0å¼€å¤´ä¸”ä¸ä¸º0 ä¾‹å¦‚ï¼š023
             if(num != 0 && pszIPAddr[first] == '0')
             {
                 return false;
@@ -129,5 +129,125 @@ bool isIPAddressValid(const char* pszIPAddr)
         return false;
     }
     return true;
+}
+void CExampleTest::TestCase01()
+{
+    const char* pazIPAddress = "127.0.0.1";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == true);
+}
+
+void CExampleTest::TestCase02()
+{
+    const char* pazIPAddress = " 1.1.1.1 ";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == true);
+}
+
+void CExampleTest::TestCase03()
+{
+    const char* pazIPAddress = "1 .0.0.1";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase04()
+{
+    const char* pazIPAddress = "001.0.0.1";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase05()
+{
+    const char* pazIPAddress = "0.0.0.0";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == true);
+}
+
+void CExampleTest::TestCase06()
+{
+    const char* pazIPAddress = "256.256.256.256";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase07()
+{
+    const char* pazIPAddress = "255.255.255.255";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == true);
+}
+
+void CExampleTest::TestCase08()
+{
+    const char* pazIPAddress = "a.255.255.255";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase09()
+{
+    const char* pazIPAddress = "1.1.1";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase10()
+{
+    const char* pazIPAddress = "1.1.1.";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase11()
+{
+    const char* pazIPAddress = "255a.255.255.255";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase12()
+{
+    const char* pazIPAddress = "2_.255.255.255";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+
+void CExampleTest::TestCase13()
+{
+    const char* pazIPAddress = "1.1.1.1.";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase14()
+{
+    const char* pazIPAddress = "";
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
+}
+
+void CExampleTest::TestCase15()
+{
+    const char* pazIPAddress = 0;
+
+    bool isIP = isIPAddressValid(pazIPAddress);
+    CPPUNIT_ASSERT(isIP == false);
 }
 */
