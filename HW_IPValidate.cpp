@@ -1,6 +1,83 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
+int WordAnalysis(const char *pszIPAddr,int p,int q)
+{
+	int s=p;
+	int num=0;
+	if(p==q) return false;//1..1.1
+	while(p<q)
+	{   
+		if(!(pszIPAddr[p]>='0'&&pszIPAddr[p]<='9')) return false;//判断是否为数字
+		num=num*10+pszIPAddr[p] -'0';
+		p++;
+	}
+	if(num<0||num>255) return 0;
+	else if(num!=0&&pszIPAddr[s]=='0') return 0;
+	return 1;
+}
+ bool isIPAddressValid(const char* pszIPAddr)
+{
+	
+    if(pszIPAddr == NULL)
+    {
+        return false;
+    }
+    int size = strlen(pszIPAddr);
+    int start = 0;
+	int num = 0;// dot count
+	//int word=0;
+    int i;
+  
+    while(pszIPAddr[start] == ' ')//去除前面的空格
+    {
+        ++start;
+    }
+    int p=start,q; //p is the pointer to the word,q point to '.' 
+    int end = size - 1;
+    while(pszIPAddr[end] == ' ')//去除后面的空格
+    {
+        --end;
+    }
+    for(i = start;i <= end;i++)
+	{
+		if(pszIPAddr[i]=='.') num++;//统计点数不对
+	}
+    for(i = start;i <= end+1;)
+	{
+	
+		if(pszIPAddr[i]==' ') return false;//字符串中间空格
+		while( (i <= end+1)&& pszIPAddr[i]!='.')
+		{
+			++i;
+		}
+		
+		if(i>end+1 )q=end+1;
+		else q=i;
+		if(WordAnalysis(pszIPAddr,p,q)==0) return false;
+		//else word++;
+		p=q+1;
+		++i;
+	}
+	if(num!=3) return false;
+	//if(word!=4) return false;
+	return true;
+}
+  int main()
+ {
+	char s[30];
+	 
+	 gets(s);
+	 //const char *s=" ";
+	 
+	 printf("%d\n",isIPAddressValid(s));
+	
+	 getchar();
+ }
+/*
+#include <iostream>
+#include <cstring>
+using namespace std;
 int WordAnalysis(char *p,char *q)
 {
 	char *s=p;
@@ -61,6 +138,7 @@ int WordAnalysis(char *p,char *q)
 	
 	 getchar();
  }
+*/
 
 /*
 bool isIPAddressValid(const char* pszIPAddr)
